@@ -11,16 +11,7 @@ Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/2.0/linux-i686/
 Source1:	%{name}.desktop
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	zip
-Requires:	cairo
-Requires:	gtk+2
 Requires:	heimdal
-Requires:	libIDL
-Requires:	libjpeg
-Requires:	libpng
-Requires:	nspr >= 1:4.6-0.20041030.1
-Requires:	nss >= 3.8
-Requires:	pango
-Requires:	zlib
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
