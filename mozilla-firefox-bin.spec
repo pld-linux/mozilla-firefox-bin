@@ -10,9 +10,7 @@ Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/2.0/linux-i686/
 # Source0-md5:	22330d74779d1b9b98d3dbc92a82628f
 Source1:	%{name}.desktop
 URL:		http://www.mozilla.org/projects/firefox/
-BuildRequires:	automake
 BuildRequires:	perl-modules
-BuildRequires:	zip
 Requires:	nspr >= 1:4.6-0.20041030.1
 Requires:	nss >= 3.8
 Provides:	wwwbrowser
