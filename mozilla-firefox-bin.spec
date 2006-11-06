@@ -85,4 +85,4 @@ fi
 #%{_pixmapsdir}/*
 %{_desktopdir}/*
 
-%{_firefoxdir}/chrome/*
+%{_firefoxdir}/chrome
