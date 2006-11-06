@@ -54,7 +54,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
 %postun
 if [ "$1" == "0" ]; then
 	rm -rf %{_firefoxdir}/chrome/overlayinfo
@@ -81,6 +80,7 @@ fi
 %{_firefoxdir}/browserconfig.properties
 %{_firefoxdir}/dictionaries
 %attr(755,root,root) %{_firefoxdir}/*.so
+%{_firefoxdir}/libfreebl3.chk
 %attr(755,root,root) %{_firefoxdir}/*.sh
 %attr(755,root,root) %{_firefoxdir}/m*
 %attr(755,root,root) %{_firefoxdir}/f*
