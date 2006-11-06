@@ -54,14 +54,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%postun
-if [ "$1" == "0" ]; then
-	rm -rf %{_firefoxdir}/chrome/overlayinfo
-	rm -f  %{_firefoxdir}/chrome/*.rdf
-	rm -rf %{_firefoxdir}/components
-	rm -rf %{_firefoxdir}/extensions
-fi
-
 %files
 %defattr(644,root,root,755)
 %{_firefoxdir}/libsoftokn3.chk
