@@ -18,10 +18,14 @@ ExclusiveArch:	i686 athlon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
+
 # mozilla and firefox provide their own versions
-%define		_noautoreqdep		libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libxpcom.so libxpcom_compat.so
-%define		_noautoprovfiles	libplc4.so libplds4.so
-%define		_noautoreq		libnspr4.so libplc4.so libplds4.so liblinc.so.1
+# list of capabilities (SONAME, perl(module), php(module) regexps) which don't generate dependencies on package NAMES
+%define		_noautoreqdep		libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libxpcom.so libxpcom_compat.so libfreebl3.so libnspr4.so libplc4.so libplds4.so libfreebl3.so libnss3.so libnssckbi.so libsmime3.so libsoftokn3.chk libsoftokn3.so libssl3.so
+# list of files (regexps) which don't generate Provides
+%define		_noautoprovfiles	%{_firefoxdir}/components
+# list of script capabilities (regexps) not to be used in Provides
+%define		_noautoprov			libplc4.so libplds4.so
 
 %description
 Mozilla Firefox is an open-source web browser, designed for standards
