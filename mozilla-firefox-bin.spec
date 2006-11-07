@@ -78,6 +78,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_firefoxdir}/f*
 %attr(755,root,root) %{_firefoxdir}/x*
 #%{_pixmapsdir}/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 
 %{_firefoxdir}/chrome
