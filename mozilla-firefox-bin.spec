@@ -3,11 +3,11 @@ Summary:	Mozilla Firefox web browser
 Summary(pl):	Mozilla Firefox - przegl±darka WWW
 Name:		mozilla-firefox-bin
 Version:	2.0
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/2.0/linux-i686/pl/%{realname}-%{version}.tar.gz
-# Source0-md5:	22330d74779d1b9b98d3dbc92a82628f
+Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/2.0/linux-i686/en-US/%{realname}-%{version}.tar.gz
+# Source0-md5:	dec219811d989aeed2b8c7e338cc0b03
 Source1:	%{name}.desktop
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	zip
