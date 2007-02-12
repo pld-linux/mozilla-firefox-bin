@@ -1,6 +1,6 @@
 %define		realname	firefox
 Summary:	Mozilla Firefox web browser
-Summary(pl):	Mozilla Firefox - przegl±darka WWW
+Summary(pl.UTF-8):   Mozilla Firefox - przeglÄ…darka WWW
 Name:		mozilla-firefox-bin
 Version:	2.0.0.1
 Release:	1
@@ -32,9 +32,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Mozilla Firefox is an open-source web browser, designed for standards
 compliance, performance and portability.
 
-%description -l pl
-Mozilla Firefox jest open sourcow± przegl±dark± sieci WWW, stworzon± z
-my¶l± o zgodno¶ci ze standardami, wydajno¶ci± i przeno¶no¶ci±.
+%description -l pl.UTF-8
+Mozilla Firefox jest open sourcowÄ… przeglÄ…darkÄ… sieci WWW, stworzonÄ… z
+myÅ›lÄ… o zgodnoÅ›ci ze standardami, wydajnoÅ›ciÄ… i przenoÅ›noÅ›ciÄ….
 
 %prep
 %setup -q -n %{realname}
