@@ -1,6 +1,6 @@
 %define		realname	firefox
 Summary:	Mozilla Firefox web browser
-Summary(pl.UTF-8):   Mozilla Firefox - przeglądarka WWW
+Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	2.0.0.1
 Release:	1
