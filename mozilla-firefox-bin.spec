@@ -24,7 +24,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # list of capabilities (SONAME, perl(module), php(module) regexps) which don't generate dependencies on package NAMES
 %define		_noautoreqdep		libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libxpcom.so libxpcom_compat.so libxpcom_core.so libfreebl3.so libnspr4.so libplc4.so libplds4.so libfreebl3.so libnss3.so libnssckbi.so libsmime3.so libsoftokn3.chk libsoftokn3.so libssl3.so
 # list of files (regexps) which don't generate Provides
-%define		_noautoprovfiles	%{_firefoxdir}/components
+%define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
 %define		_noautoprov			libplc4.so libplds4.so
 
@@ -44,13 +44,10 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 rm -rf $RPM_BUILD_ROOT
 install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_firefoxdir}} \
-	$RPM_BUILD_ROOT{%{_includedir}/%{name}/idl,%{_pkgconfigdir}}
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}} \
 
-cp -r * $RPM_BUILD_ROOT%{_firefoxdir}
+cp -a * $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/firefox
-#ln -s %{_firefoxdir}/firefox $RPM_BUILD_ROOT%{_bindir}/firefox
-
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 %clean
@@ -58,28 +55,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_firefoxdir}/libsoftokn3.chk
 %attr(755,root,root) %{_bindir}/firefox
-%dir %{_firefoxdir}
-%{_firefoxdir}/res
-%dir %{_firefoxdir}/components
-%attr(755,root,root) %{_firefoxdir}/components/*.so
-%{_firefoxdir}/components/*.js
-%{_firefoxdir}/components/*.xpt
-%{_firefoxdir}/plugins
-%{_firefoxdir}/searchplugins
-%{_firefoxdir}/icons
-%{_firefoxdir}/defaults
-%{_firefoxdir}/greprefs
-%{_firefoxdir}/browserconfig.properties
-%{_firefoxdir}/dictionaries
-%attr(755,root,root) %{_firefoxdir}/*.so
-%{_firefoxdir}/libfreebl3.chk
-%attr(755,root,root) %{_firefoxdir}/*.sh
-%attr(755,root,root) %{_firefoxdir}/m*
-%attr(755,root,root) %{_firefoxdir}/f*
-%attr(755,root,root) %{_firefoxdir}/x*
-#%{_pixmapsdir}/*
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/res
+%dir %{_libdir}/%{name}/components
+%attr(755,root,root) %{_libdir}/%{name}/components/*.so
+%{_libdir}/%{name}/components/*.js
+%{_libdir}/%{name}/components/*.xpt
+%{_libdir}/%{name}/chrome
+%{_libdir}/%{name}/defaults
+%{_libdir}/%{name}/greprefs
+%{_libdir}/%{name}/icons
+%{_libdir}/%{name}/plugins
+%{_libdir}/%{name}/searchplugins
+%{_libdir}/%{name}/dictionaries
+%{_libdir}/%{name}/browserconfig.properties
+%{_libdir}/%{name}/libfreebl3.chk
+%{_libdir}/%{name}/libsoftokn3.chk
+%attr(755,root,root) %{_libdir}/%{name}/*.so
+%attr(755,root,root) %{_libdir}/%{name}/*.sh
+%attr(755,root,root) %{_libdir}/%{name}/m*
+%attr(755,root,root) %{_libdir}/%{name}/f*
+%attr(755,root,root) %{_libdir}/%{name}/x*
 %{_desktopdir}/*.desktop
-
-%{_firefoxdir}/chrome
