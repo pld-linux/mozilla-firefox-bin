@@ -2,12 +2,12 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	2.0.0.7
-Release:	1
+Version:	2.0.0.8
+Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.gz
-# Source0-md5:	064cf81cc245c18de545f139e3e795fc
+# Source0-md5:	e05a4f4fa751faff550530e2d80a9e76
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
@@ -20,13 +20,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
+%define		nss_caps	libfreebl3.so libnss3.so libnssckbi.so libsmime3.so ibsoftokn3.so libssl3.so
+%define		nspr_caps	libnspr4.so libplc4.so libplds4.so
 # mozilla and firefox provide their own versions
 # list of capabilities (SONAME, perl(module), php(module) regexps) which don't generate dependencies on package NAMES
-%define		_noautoreqdep		libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libxpcom.so libxpcom_compat.so libxpcom_core.so libfreebl3.so libnspr4.so libplc4.so libplds4.so libfreebl3.so libnss3.so libnssckbi.so libsmime3.so libsoftokn3.chk libsoftokn3.so libssl3.so
+%define		_noautoreqdep		libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libxpcom.so libxpcom_compat.so libxpcom_core.so %{nspr_caps} %{nss_caps}
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
-%define		_noautoprov			libplc4.so libplds4.so
+%define		_noautoprov			libgtkembedmoz.so libmozjs.so libxpcom.so libxul.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpistub.so %{nss_caps} %{nspr_caps}
+%define		_noautoreq			%{_noautoprov}
 
 %description
 Mozilla Firefox is an open-source web browser, designed for standards
