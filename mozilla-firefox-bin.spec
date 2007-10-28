@@ -24,9 +24,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		nspr_caps	libnspr4.so libplc4.so libplds4.so
 %define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so
 
-# mozilla and firefox provide their own versions
-# list of capabilities (SONAME, perl(module), php(module) regexps) which don't generate dependencies on package NAMES
-%define		_noautoreqdep		%{moz_caps} %{nspr_caps} %{nss_caps}
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
