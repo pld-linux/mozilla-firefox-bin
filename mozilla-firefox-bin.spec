@@ -2,19 +2,21 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	3.0.3
+Version:	3.1b1
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
-# Source0-md5:	7cf7c5f4217b6c5d4af8ba56d6d4b2ac
+# Source0-md5:	a1c0241f8ab837ace167e455de0d34a9
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	zip
 Provides:	wwwbrowser
+Requires:	browser-plugins >= 2.0
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
+Conflicts:	iceweasel
 ExclusiveArch:	i686 athlon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,10 +50,20 @@ install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}} \
 
+%browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/plugins
+
 cp -a * $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox
 ln -s mozilla-firefox $RPM_BUILD_ROOT%{_bindir}/firefox
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+
+%post
+%update_browser_plugins
+
+%postun
+if [ "$1" = 0 ]; then
+	%update_browser_plugins
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -60,6 +72,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mozilla-firefox
 %attr(755,root,root) %{_bindir}/firefox
+
+# browser plugins v2
+%{_browserpluginsconfdir}/browsers.d/%{name}.*
+%config(noreplace) %verify(not md5 mtime size) %{_browserpluginsconfdir}/blacklist.d/%{name}.*.blacklist
+
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/res
 %dir %{_libdir}/%{name}/components
