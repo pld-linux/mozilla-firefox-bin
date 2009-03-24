@@ -2,12 +2,12 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	2.0.0.18
+Version:	3.0.7	
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.gz
-# Source0-md5:	9f2b9cf1f486b43050ad3799b4879007
+Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
+# Source0-md5:	06deb26f33d2eb52c5f1192bb66f0a17
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
@@ -80,5 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
 %attr(755,root,root) %{_libdir}/%{name}/m*
 %attr(755,root,root) %{_libdir}/%{name}/f*
-%attr(755,root,root) %{_libdir}/%{name}/x*
 %{_desktopdir}/*.desktop
