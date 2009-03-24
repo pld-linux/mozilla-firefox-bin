@@ -52,6 +52,7 @@ cp -a * $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox
 ln -s mozilla-firefox $RPM_BUILD_ROOT%{_bindir}/firefox
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+install icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,4 +83,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
 %attr(755,root,root) %{_libdir}/%{name}/m*
 %attr(755,root,root) %{_libdir}/%{name}/f*
+%{_pixmapsdir}/mozilla-firefox-bin.png
 %{_desktopdir}/*.desktop
