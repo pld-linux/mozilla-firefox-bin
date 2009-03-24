@@ -61,6 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mozilla-firefox
 %attr(755,root,root) %{_bindir}/firefox
 %dir %{_libdir}/%{name}
+%{_libdir}/%{name}/.autoreg
+%{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/res
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
