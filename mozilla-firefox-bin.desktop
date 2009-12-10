@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Mozilla Firefox
 Name[pl]=Mozilla Firefox
-Comment=Web browser
-Comment[pl]=Przeglądarka WWW
+GenericName=Web Browser
+GenericName[pl]=Przeglądarka WWW
 Exec=firefox
 Icon=mozilla-firefox-bin
 Terminal=false
