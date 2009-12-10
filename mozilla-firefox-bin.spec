@@ -2,12 +2,12 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	3.5.4
+Version:	3.5.5
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
-# Source0-md5:	93c53d7fffc5c002705ba046745fb5cd
+# Source0-md5:	c312a6f3d193398cd09d5b1ad9b5b974
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
@@ -20,9 +20,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
-%define		nss_caps	libfreebl3.so libnss3.so libnssckbi.so libsmime3.so ibsoftokn3.so libssl3.so
+%define		nss_caps	libfreebl3.so libnss3.so libnssckbi.so libsmime3.so ibsoftokn3.so libssl3.so libnssutil3.so libnssdbm3.so
 %define		nspr_caps	libnspr4.so libplc4.so libplds4.so
-%define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so
+%define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so libsqlite3.so
 
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
@@ -48,7 +48,7 @@ install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}} \
 
-cp -a * $RPM_BUILD_ROOT%{_libdir}/%{name}
+cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox
 ln -s mozilla-firefox $RPM_BUILD_ROOT%{_bindir}/firefox
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
