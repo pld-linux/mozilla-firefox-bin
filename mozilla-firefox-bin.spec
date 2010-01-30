@@ -65,6 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/platform.ini
 %{_libdir}/%{name}/res
+%dir %{_libdir}/%{name}/extensions
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
 %{_libdir}/%{name}/components/*.js
