@@ -55,6 +55,7 @@ else
 		if [ -f "`pwd`/$1" ]; then
 			exec $FIREFOX "file://`pwd`/$1"
 		else
+			pkill -f mozilla-firefox-bin
 			exec $FIREFOX "$@"
 		fi
 	else
