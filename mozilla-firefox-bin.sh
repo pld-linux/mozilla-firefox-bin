@@ -35,7 +35,7 @@ fi
 # compreg.dat and/or chrome.rdf will screw things up if it's from an
 # older version.  http://bugs.gentoo.org/show_bug.cgi?id=63999
 for f in ~/{.,.mozilla/}firefox/*/{compreg.dat,chrome.rdf,XUL.mfasl}; do
-	if [[ -f ${f} && ${f} -ot /usr/bin/mozilla-firefox ]]; then
+	if [[ -f ${f} && ${f} -ot /usr/bin/mozilla-firefox-bin ]]; then
 		echo "Removing ${f} leftover from older firefox"
 		rm -f "${f}"
 	fi

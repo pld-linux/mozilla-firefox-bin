@@ -3,7 +3,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.3
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -49,8 +49,8 @@ install -d \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}} \
 
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
-sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox
-ln -s mozilla-firefox $RPM_BUILD_ROOT%{_bindir}/firefox
+sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox-bin
+ln -s mozilla-firefox-bin $RPM_BUILD_ROOT%{_bindir}/firefox-bin
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
 
@@ -59,8 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/mozilla-firefox
-%attr(755,root,root) %{_bindir}/firefox
+%attr(755,root,root) %{_bindir}/mozilla-firefox-bin
+%attr(755,root,root) %{_bindir}/firefox-bin
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/platform.ini
