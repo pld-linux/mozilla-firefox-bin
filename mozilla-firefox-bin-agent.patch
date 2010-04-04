@@ -1,0 +1,12 @@
+--- defaults/pref/firefox.js.orig	2010-04-04 21:49:10.532414172 +0200
++++ defaults/pref/firefox.js	2010-04-04 21:52:41.597427771 +0200
+@@ -144,6 +144,9 @@
+ pref("general.useragent.locale", "en-US");
+ pref("general.skins.selectedSkin", "classic/1.0");
+ pref("general.useragent.extra.firefox", "Firefox/3.6.3");
++pref("general.useragent.vendor", "PLD");
++pref("general.useragent.vendorSub", "3.0");
++pref("general.useragent.vendorComment", "Th");
+ 
+ pref("general.smoothScroll", false);
+ //@line 190 "/builds/slave/linux_build/build/browser/app/profile/firefox.js"
