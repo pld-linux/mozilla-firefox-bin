@@ -53,6 +53,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoprov			%{moz_caps} %{nss_caps} %{nspr_caps}
 %define		_noautoreq			%{_noautoprov}
 
+# no debuginfo available
+%define		_enable_debug_packages	0
+
 %description
 Mozilla Firefox is an open-source web browser, designed for standards
 compliance, performance and portability.
@@ -120,7 +123,8 @@ fi
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/greprefs
 %{_libdir}/%{name}/icons
-%{_libdir}/%{name}/plugins
+%dir %{_libdir}/%{name}/plugins
+%attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
 %{_libdir}/%{name}/searchplugins
 %{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/browserconfig.properties
