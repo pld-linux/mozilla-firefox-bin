@@ -1,3 +1,21 @@
+# TODO
+#   /usr/lib/mozilla-firefox-bin/.autoreg
+#   /usr/lib/mozilla-firefox-bin/LICENSE
+#   /usr/lib/mozilla-firefox-bin/README.txt
+#   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
+#   /usr/lib/mozilla-firefox-bin/blocklist.xml
+#   /usr/lib/mozilla-firefox-bin/components/components.list
+#   /usr/lib/mozilla-firefox-bin/crashreporter
+#   /usr/lib/mozilla-firefox-bin/crashreporter-override.ini
+#   /usr/lib/mozilla-firefox-bin/crashreporter.ini
+#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/icon.png
+#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
+#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/preview.png
+#   /usr/lib/mozilla-firefox-bin/libnssdbm3.chk
+#   /usr/lib/mozilla-firefox-bin/removed-files
+#   /usr/lib/mozilla-firefox-bin/update.locale
+#   /usr/lib/mozilla-firefox-bin/updater
+#   /usr/lib/mozilla-firefox-bin/updater.ini
 %define		realname	firefox
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
@@ -13,9 +31,11 @@ Source2:	%{name}.sh
 Patch0:		%{name}-agent.patch
 Patch1:		%{name}-ti-agent.patch
 URL:		http://www.mozilla.org/projects/firefox/
+BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
-Provides:	wwwbrowser
+Requires:	browser-plugins >= 2.0
 Requires:	procps
+Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
 ExclusiveArch:	i686 athlon
@@ -62,16 +82,31 @@ install -d \
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox-bin
 ln -s mozilla-firefox-bin $RPM_BUILD_ROOT%{_bindir}/firefox-bin
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
+cp -a %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -a icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
+
+%browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/plugins
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+%update_browser_plugins
+
+%postun
+if [ "$1" = 0 ]; then
+	%update_browser_plugins
+fi
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mozilla-firefox-bin
 %attr(755,root,root) %{_bindir}/firefox-bin
+
+# browser plugins v2
+%{_browserpluginsconfdir}/browsers.d/%{name}.*
+%config(noreplace) %verify(not md5 mtime size) %{_browserpluginsconfdir}/blacklist.d/%{name}.*.blacklist
+
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/platform.ini
