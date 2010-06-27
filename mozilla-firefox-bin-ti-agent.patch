@@ -1,9 +1,9 @@
---- defaults/pref/firefox.js.orig	2010-04-04 21:49:10.532414172 +0200
-+++ defaults/pref/firefox.js	2010-04-04 21:50:53.065423901 +0200
+--- defaults/pref/firefox.js.orig	2010-06-26 07:59:44.000000000 +0200
++++ defaults/pref/firefox.js	2010-06-27 22:01:45.022918561 +0200
 @@ -144,6 +144,8 @@
  pref("general.useragent.locale", "en-US");
  pref("general.skins.selectedSkin", "classic/1.0");
- pref("general.useragent.extra.firefox", "Firefox/3.6.3");
+ pref("general.useragent.extra.firefox", "Firefox/3.6.6");
 +pref("general.useragent.vendor", "PLD");
 +pref("general.useragent.vendorSub", "Titanium");
  
