@@ -4,15 +4,12 @@
 #   /usr/lib/mozilla-firefox-bin/README.txt
 #   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
 #   /usr/lib/mozilla-firefox-bin/blocklist.xml
-#   /usr/lib/mozilla-firefox-bin/components/components.list
 #   /usr/lib/mozilla-firefox-bin/crashreporter
 #   /usr/lib/mozilla-firefox-bin/crashreporter-override.ini
 #   /usr/lib/mozilla-firefox-bin/crashreporter.ini
 #   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/icon.png
 #   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
 #   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/preview.png
-#   /usr/lib/mozilla-firefox-bin/libnssdbm3.chk
-#   /usr/lib/mozilla-firefox-bin/removed-files
 #   /usr/lib/mozilla-firefox-bin/update.locale
 #   /usr/lib/mozilla-firefox-bin/updater
 #   /usr/lib/mozilla-firefox-bin/updater.ini
@@ -21,7 +18,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.1
+Release:	0.2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -34,7 +31,9 @@ URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires:	browser-plugins >= 2.0
+Requires:	myspell-common
 Requires:	procps
+Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
@@ -46,12 +45,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		nss_caps	libfreebl3.so libnss3.so libnssckbi.so libsmime3.so ibsoftokn3.so libssl3.so libnssutil3.so libnssdbm3.so
 %define		nspr_caps	libnspr4.so libplc4.so libplds4.so
 %define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so libsqlite3.so
+%define		sqlite_caps	libsqlite3.so
 
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
 %define		_noautoprov			%{moz_caps} %{nss_caps} %{nspr_caps}
-%define		_noautoreq			%{_noautoprov}
+%define		_noautoreq  		%{_noautoprov} %{sqlite_caps}
 
 # no debuginfo available
 %define		_enable_debug_packages	0
@@ -83,9 +83,17 @@ cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/%{name}
 ln -s %{name} $RPM_BUILD_ROOT%{_bindir}/firefox-bin
 cp -a %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-cp -a icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
+cp -a icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/plugins
+
+# use system dict
+rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
+ln -s %{_datadir}/myspell $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
+
+# use system sqlite
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/libsqlite3.so
+ln -s /%{_lib}/libsqlite3.so.0 $RPM_BUILD_ROOT%{_libdir}/%{name}/libsqlite3.so
 
 # never package these
 # nss
@@ -102,6 +110,12 @@ rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%pretrans
+if [ -d %{_libdir}/%{name}/dictionaries ] && [ ! -L %{_libdir}/%{name}/dictionaries ]; then
+	mv -v %{_libdir}/%{name}/dictionaries{,.rpmsave}
+fi
+exit 0
 
 %post
 %update_browser_plugins
