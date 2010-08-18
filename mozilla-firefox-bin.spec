@@ -21,7 +21,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	1
+Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -69,26 +69,36 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %if "%{pld_release}" == "th"
 %patch0 -p0
 %endif
-
 %if "%{pld_release}" == "ti"
 %patch1 -p0
 %endif
 
-
-%build
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d \
-	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_libdir}/%{name}} \
+	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}/%{name}} \
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}} \
 
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
-sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/mozilla-firefox-bin
-ln -s mozilla-firefox-bin $RPM_BUILD_ROOT%{_bindir}/firefox-bin
+sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/%{name}
+ln -s %{name} $RPM_BUILD_ROOT%{_bindir}/firefox-bin
 cp -a %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 cp -a icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/mozilla-firefox-bin.png
 
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/plugins
+
+# never package these
+# nss
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freebl3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
+# nspr
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
+# mozldap
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{ldap,ldif,prldap,ssldap}60.so
+
+# remove unecessary stuff
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/README.txt
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/components/components.list
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,7 +113,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/mozilla-firefox-bin
+%attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/firefox-bin
 
 # browser plugins v2
@@ -128,11 +138,9 @@ fi
 %{_libdir}/%{name}/searchplugins
 %{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/browserconfig.properties
-%{_libdir}/%{name}/libfreebl3.chk
-%{_libdir}/%{name}/libsoftokn3.chk
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
 %attr(755,root,root) %{_libdir}/%{name}/m*
 %attr(755,root,root) %{_libdir}/%{name}/f*
-%{_pixmapsdir}/mozilla-firefox-bin.png
-%{_desktopdir}/*.desktop
+%{_pixmapsdir}/%{name}.png
+%{_desktopdir}/%{name}.desktop
