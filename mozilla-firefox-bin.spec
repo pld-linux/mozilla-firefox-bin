@@ -1,18 +1,9 @@
-# TODO
-#   /usr/lib/mozilla-firefox-bin/crashreporter
-#   /usr/lib/mozilla-firefox-bin/crashreporter-override.ini
-#   /usr/lib/mozilla-firefox-bin/crashreporter.ini
-
-#   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
-#   /usr/lib/mozilla-firefox-bin/update.locale
-#   /usr/lib/mozilla-firefox-bin/updater
-#   /usr/lib/mozilla-firefox-bin/updater.ini
 %define		realname	firefox
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.7
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -99,6 +90,12 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
 # mozldap
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{ldap,ldif,prldap,ssldap}60.so
 
+# remove update notifier, we prefer rpm packages for updating
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater.ini
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update.locale
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
+
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/README.txt
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/LICENSE
@@ -136,9 +133,23 @@ fi
 
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
-%{_libdir}/%{name}/platform.ini
 %{_libdir}/%{name}/blocklist.xml
+%{_libdir}/%{name}/browserconfig.properties
+%{_libdir}/%{name}/platform.ini
+%attr(755,root,root) %{_libdir}/%{name}/firefox
+%attr(755,root,root) %{_libdir}/%{name}/firefox-bin
+%attr(755,root,root) %{_libdir}/%{name}/mozilla-xremote-client
+%attr(755,root,root) %{_libdir}/%{name}/plugin-container
+
+%{_libdir}/%{name}/chrome
+%{_libdir}/%{name}/defaults
+%{_libdir}/%{name}/dictionaries
+%{_libdir}/%{name}/greprefs
+%{_libdir}/%{name}/icons
+%{_libdir}/%{name}/modules
 %{_libdir}/%{name}/res
+%{_libdir}/%{name}/searchplugins
+
 %dir %{_libdir}/%{name}/extensions
 # the signature of the default theme
 %{_libdir}/%{name}/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
@@ -147,19 +158,16 @@ fi
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
 %{_libdir}/%{name}/components/*.js
 %{_libdir}/%{name}/components/*.xpt
-%{_libdir}/%{name}/chrome
-%{_libdir}/%{name}/defaults
-%{_libdir}/%{name}/greprefs
-%{_libdir}/%{name}/icons
+
 %dir %{_libdir}/%{name}/plugins
 %attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
-%{_libdir}/%{name}/searchplugins
-%{_libdir}/%{name}/dictionaries
-%{_libdir}/%{name}/browserconfig.properties
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
-%attr(755,root,root) %{_libdir}/%{name}/plugin-container
-%attr(755,root,root) %{_libdir}/%{name}/m*
-%attr(755,root,root) %{_libdir}/%{name}/f*
+
+# crashreporter
+%attr(755,root,root) %{_libdir}/%{name}/crashreporter
+%{_libdir}/%{name}/crashreporter-override.ini
+%{_libdir}/%{name}/crashreporter.ini
+
 %{_pixmapsdir}/%{name}.png
 %{_desktopdir}/%{name}.desktop
