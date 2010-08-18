@@ -29,7 +29,6 @@ BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
-Requires:	procps
 Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
