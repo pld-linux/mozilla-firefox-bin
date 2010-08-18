@@ -13,7 +13,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.5
+Release:	0.6
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -67,8 +67,8 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %endif
 %if "%{pld_release}" == "ti"
 %patch1 -p0
-%patch2 -p1
 %endif
+%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
