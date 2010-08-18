@@ -1,10 +1,9 @@
 # TODO
-#   /usr/lib/mozilla-firefox-bin/.autoreg
-#   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
-#   /usr/lib/mozilla-firefox-bin/blocklist.xml
 #   /usr/lib/mozilla-firefox-bin/crashreporter
 #   /usr/lib/mozilla-firefox-bin/crashreporter-override.ini
 #   /usr/lib/mozilla-firefox-bin/crashreporter.ini
+
+#   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
 #   /usr/lib/mozilla-firefox-bin/update.locale
 #   /usr/lib/mozilla-firefox-bin/updater
 #   /usr/lib/mozilla-firefox-bin/updater.ini
@@ -13,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.6
+Release:	0.7
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -106,6 +105,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/%{name}/LICENSE
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/components/components.list
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/.autoreg
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -137,6 +137,7 @@ fi
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/platform.ini
+%{_libdir}/%{name}/blocklist.xml
 %{_libdir}/%{name}/res
 %dir %{_libdir}/%{name}/extensions
 # the signature of the default theme
