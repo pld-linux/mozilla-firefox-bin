@@ -1,7 +1,5 @@
 # TODO
 #   /usr/lib/mozilla-firefox-bin/.autoreg
-#   /usr/lib/mozilla-firefox-bin/LICENSE
-#   /usr/lib/mozilla-firefox-bin/README.txt
 #   /usr/lib/mozilla-firefox-bin/Throbber-small.gif
 #   /usr/lib/mozilla-firefox-bin/blocklist.xml
 #   /usr/lib/mozilla-firefox-bin/crashreporter
@@ -15,7 +13,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.4
+Release:	0.5
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -104,8 +102,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{ldap,ldif,prldap,ssldap}60.so
 
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/README.txt
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/LICENSE
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/components/components.list
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -126,6 +126,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc README.txt
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/firefox-bin
 
@@ -156,6 +157,7 @@ fi
 %{_libdir}/%{name}/browserconfig.properties
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
+%attr(755,root,root) %{_libdir}/%{name}/plugin-container
 %attr(755,root,root) %{_libdir}/%{name}/m*
 %attr(755,root,root) %{_libdir}/%{name}/f*
 %{_pixmapsdir}/%{name}.png
