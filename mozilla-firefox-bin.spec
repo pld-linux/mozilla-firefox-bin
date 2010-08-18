@@ -7,9 +7,6 @@
 #   /usr/lib/mozilla-firefox-bin/crashreporter
 #   /usr/lib/mozilla-firefox-bin/crashreporter-override.ini
 #   /usr/lib/mozilla-firefox-bin/crashreporter.ini
-#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/icon.png
-#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
-#   /usr/lib/mozilla-firefox-bin/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/preview.png
 #   /usr/lib/mozilla-firefox-bin/update.locale
 #   /usr/lib/mozilla-firefox-bin/updater
 #   /usr/lib/mozilla-firefox-bin/updater.ini
@@ -18,7 +15,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.2
+Release:	0.3
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -139,6 +136,9 @@ fi
 %{_libdir}/%{name}/platform.ini
 %{_libdir}/%{name}/res
 %dir %{_libdir}/%{name}/extensions
+# the signature of the default theme
+%{_libdir}/%{name}/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
+
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
 %{_libdir}/%{name}/components/*.js
