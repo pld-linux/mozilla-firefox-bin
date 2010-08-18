@@ -15,7 +15,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	3.6.8
-Release:	0.3
+Release:	0.4
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
@@ -24,6 +24,7 @@ Source1:	%{name}.desktop
 Source2:	%{name}.sh
 Patch0:		%{name}-agent.patch
 Patch1:		%{name}-ti-agent.patch
+Patch2:		nochilds.patch
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
@@ -61,12 +62,14 @@ Mozilla Firefox jest open sourcową przeglądarką sieci WWW, stworzoną z
 myślą o zgodności ze standardami, wydajnością i przenośnością.
 
 %prep
-%setup -q -n %{realname}
+%setup -qcT
+%{__tar} jxf %{SOURCE0} --strip-components=1
 %if "%{pld_release}" == "th"
 %patch0 -p0
 %endif
 %if "%{pld_release}" == "ti"
 %patch1 -p0
+%patch2 -p1
 %endif
 
 %install

@@ -1,0 +1,27 @@
+--- mozilla-firefox-bin-3.6.8/firefox	2010-07-23 01:31:13.000000000 +0300
++++ mozilla-firefox-bin-3.6.8/firefox	2010-08-18 10:26:59.365912397 +0300
+@@ -135,8 +135,11 @@
+ if [ $debugging = 1 ]
+ then
+   echo $dist_bin/run-mozilla.sh $script_args $dist_bin/$MOZILLA_BIN "$@"
++  "$dist_bin/run-mozilla.sh" $script_args "$dist_bin/$MOZILLA_BIN" "$@"
++else
++  exec "$dist_bin/run-mozilla.sh" $script_args "$dist_bin/$MOZILLA_BIN" "$@"
++  # NORETURN
+ fi
+-"$dist_bin/run-mozilla.sh" $script_args "$dist_bin/$MOZILLA_BIN" "$@"
+ exitcode=$?
+ 
+ exit $exitcode
+--- mozilla-firefox-bin-3.6.8/run-mozilla.sh	2010-07-23 01:31:13.000000000 +0300
++++ mozilla-firefox-bin-3.6.8/run-mozilla.sh	2010-08-18 10:24:42.485849818 +0300
+@@ -140,7 +140,8 @@
+ 	##
+ 	## Run the program
+ 	##
+-	"$prog" ${1+"$@"}
++	exec "$prog" ${1+"$@"}
++	# NORETURN
+ 	exitcode=$?
+ }
+ ##########################################################################
