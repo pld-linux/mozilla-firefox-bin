@@ -2,12 +2,12 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	3.6.11
+Version:	3.6.12
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
-# Source0-md5:	49a59156ecca892a00b3a8016ff74eac
+# Source0-md5:	d9c3db10ca1af52bdcbdadf2ca314772
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 Patch0:		%{name}-agent.patch
