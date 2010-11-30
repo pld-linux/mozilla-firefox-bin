@@ -2,17 +2,17 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	3.6.12
-Release:	1
+Version:	4.0b7
+Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
-# Source0-md5:	d9c3db10ca1af52bdcbdadf2ca314772
+# Source0-md5:	50f6b8f9e472a8dee6d67a2df6b1609d
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
-Patch0:		%{name}-agent.patch
-Patch1:		%{name}-ti-agent.patch
-Patch2:		nochilds.patch
+#Patch0:		%{name}-agent.patch
+#Patch1:		%{name}-ti-agent.patch
+#Patch2:		nochilds.patch
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
@@ -53,12 +53,12 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %setup -qcT
 %{__tar} jxf %{SOURCE0} --strip-components=1
 %if "%{pld_release}" == "th"
-%patch0 -p0
+#%patch0 -p0
 %endif
 %if "%{pld_release}" == "ti"
-%patch1 -p0
+#%patch1 -p0
 %endif
-%patch2 -p1
+#%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -98,11 +98,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/README.txt
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/LICENSE
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/components/components.list
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/.autoreg
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -134,7 +131,9 @@ fi
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/blocklist.xml
-%{_libdir}/%{name}/browserconfig.properties
+#%{_libdir}/%{name}/browserconfig.properties
+%{_libdir}/%{name}/chrome.manifest
+%{_libdir}/%{name}/omni.jar
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
@@ -144,23 +143,26 @@ fi
 %{_libdir}/%{name}/chrome
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/dictionaries
-%{_libdir}/%{name}/greprefs
+#%{_libdir}/%{name}/greprefs
 %{_libdir}/%{name}/icons
-%{_libdir}/%{name}/modules
-%{_libdir}/%{name}/res
+#%{_libdir}/%{name}/modules
+#%{_libdir}/%{name}/res
 %{_libdir}/%{name}/searchplugins
 
 %dir %{_libdir}/%{name}/extensions
 # the signature of the default theme
 %{_libdir}/%{name}/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
 
+%{_libdir}/%{name}/extensions/testpilot@labs.mozilla.com
+
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
-%{_libdir}/%{name}/components/*.js
-%{_libdir}/%{name}/components/*.xpt
+%{_libdir}/%{name}/components/binary.manifest
+#%{_libdir}/%{name}/components/*.js
+#%{_libdir}/%{name}/components/*.xpt
 
-%dir %{_libdir}/%{name}/plugins
-%attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
+#%dir %{_libdir}/%{name}/plugins
+#%attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
 
