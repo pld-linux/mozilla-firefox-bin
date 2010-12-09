@@ -71,8 +71,7 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 rm -rf $RPM_BUILD_ROOT
 install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}/%{name}/plugins} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}} \
-	$RPM_BUILD_ROOT%{_libdir}/%{name}/plugins
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
 sed 's,@LIBDIR@,%{_libdir},' %{SOURCE3} > $RPM_BUILD_ROOT%{_bindir}/%{name}
