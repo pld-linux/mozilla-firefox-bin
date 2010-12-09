@@ -6,10 +6,12 @@ Version:	4.0b7
 Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2
+Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
 # Source0-md5:	50f6b8f9e472a8dee6d67a2df6b1609d
-Source1:	%{name}.desktop
-Source2:	%{name}.sh
+Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
+# Source1-md5:	c1789092173efd6298e431f11bfe2601
+Source2:	%{name}.desktop
+Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
 #Patch1:		%{name}-ti-agent.patch
 #Patch2:		nochilds.patch
@@ -22,7 +24,7 @@ Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
-ExclusiveArch:	i686 athlon
+ExclusiveArch:	i686 athlon x86_64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
@@ -51,7 +53,12 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 
 %prep
 %setup -qcT
+%ifarch i686 athlon
 %{__tar} jxf %{SOURCE0} --strip-components=1
+%endif
+%ifarch %{x8664}
+%{__tar} jxf %{SOURCE1} --strip-components=1
+%endif
 %if "%{pld_release}" == "th"
 #%patch0 -p0
 %endif
@@ -65,11 +72,12 @@ rm -rf $RPM_BUILD_ROOT
 install -d \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}/%{name}} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}} \
+	$RPM_BUILD_ROOT%{_libdir}/%{name}/plugins
 
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
-sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/%{name}
+sed 's,@LIBDIR@,%{_libdir},' %{SOURCE3} > $RPM_BUILD_ROOT%{_bindir}/%{name}
 ln -s %{name} $RPM_BUILD_ROOT%{_bindir}/firefox-bin
-cp -a %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -a %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 cp -a icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/plugins
@@ -161,7 +169,7 @@ fi
 #%{_libdir}/%{name}/components/*.js
 #%{_libdir}/%{name}/components/*.xpt
 
-#%dir %{_libdir}/%{name}/plugins
+%dir %{_libdir}/%{name}/plugins
 #%attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
