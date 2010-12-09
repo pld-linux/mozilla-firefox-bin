@@ -3,7 +3,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	4.0b7
-Release:	0.1
+Release:	0.2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
@@ -24,7 +24,7 @@ Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
-ExclusiveArch:	i686 athlon x86_64
+ExclusiveArch:	i686 athlon %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
@@ -70,7 +70,7 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d \
-	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}/%{name}} \
+	$RPM_BUILD_ROOT{%{_bindir},%{_sbindir},%{_libdir}/%{name}/plugins} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}} \
 	$RPM_BUILD_ROOT%{_libdir}/%{name}/plugins
 
