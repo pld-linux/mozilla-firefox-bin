@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	4.0b7
-Release:	0.2
+Version:	4.0b9
+Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	50f6b8f9e472a8dee6d67a2df6b1609d
+# Source0-md5:	a9f506023fe28048a4db8199486fffb9
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	c1789092173efd6298e431f11bfe2601
+# Source1-md5:	89d4c0d417d3f86be2908e576316726a
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -29,15 +29,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
-%define		nss_caps	libfreebl3.so libnss3.so libnssckbi.so libsmime3.so ibsoftokn3.so libssl3.so libnssutil3.so libnssdbm3.so
-%define		nspr_caps	libnspr4.so libplc4.so libplds4.so
 %define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so libsqlite3.so
 %define		sqlite_caps	libsqlite3.so
 
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
-%define		_noautoprov			%{moz_caps} %{nss_caps} %{nspr_caps}
+%define		_noautoprov			%{moz_caps}
 %define		_noautoreq  		%{_noautoprov} %{sqlite_caps}
 
 # no debuginfo available
