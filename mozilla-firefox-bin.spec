@@ -29,7 +29,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
-%define		moz_caps	libgkgfx.so libgtkembedmoz.so libgtkxtbin.so libjsj.so libmozjs.so libnullplugin.so libxpcom_compat.so libxpcom_core.so libxpcom.so libxpistub.so libxul.so libsqlite3.so
+%define		moz_caps	libmozalloc.so libmozsqlite3.so libxpcom.so libxul.so
 %define		sqlite_caps	libsqlite3.so
 
 # list of files (regexps) which don't generate Provides
