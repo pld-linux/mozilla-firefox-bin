@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	4.0b12
+Version:	4.0rc1
 Release:	0.1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	6e6934cc3a450812a479cee42d9afc4a
+# Source0-md5:	f3d12a227fe222f6a2f47f70dcb8854d
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	15de23da1dd3c7bf922cd5b4cdeb1f6f
+# Source1-md5:	cb629ef9b31121276ec86ea7fdfd134d
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -158,9 +158,9 @@ fi
 # the signature of the default theme
 %{_libdir}/%{name}/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
 
-%dir %{_libdir}/%{name}/distribution
-%dir %{_libdir}/%{name}/distribution/extensions
-%{_libdir}/%{name}/distribution/extensions/testpilot@labs.mozilla.com.xpi
+#%dir %{_libdir}/%{name}/distribution
+#%dir %{_libdir}/%{name}/distribution/extensions
+#%{_libdir}/%{name}/distribution/extensions/testpilot@labs.mozilla.com.xpi
 
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
