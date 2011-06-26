@@ -36,7 +36,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
 %define		_noautoprov			%{moz_caps}
-%define		_noautoreq  		%{_noautoprov} %{sqlite_caps}
+%define		_noautoreq  		%{_noautoprov} %{sqlite_caps} libnotify.so.1
 
 # no debuginfo available
 %define		_enable_debug_packages	0
