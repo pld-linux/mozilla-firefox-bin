@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	5.0.1
+Version:	6.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	5ac3300c7b13c448b8943ce308163741
+# Source0-md5:	47dc65cd5bca3f7696e40f9613865633
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	ef6cc3d42ffd8fdc537f2338acc9c5e5
+# Source1-md5:	60dc19c042e6084a239bb21de6a33ca6
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -20,6 +20,7 @@ BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
+Requires:	nss >=3.12.10
 Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -150,6 +151,8 @@ fi
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/dictionaries
 #%{_libdir}/%{name}/greprefs
+%{_libdir}/%{name}/hyphenation
+%{_libdir}/%{name}/hyphenation/hyph_en_US.dic
 %{_libdir}/%{name}/icons
 #%{_libdir}/%{name}/modules
 #%{_libdir}/%{name}/res
