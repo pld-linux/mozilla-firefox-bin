@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	7.0
+Version:	7.0.1
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	fb1ae80071d1d93d0a71e9678f89fa6c
+# Source0-md5:	04f39e837aead90dcba3108e6212b470
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	57cf501ff1975dda15c365c56b7327a5
+# Source1-md5:	20d6c8e3dfc97d08d1dec7d0479f924f
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
