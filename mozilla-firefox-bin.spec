@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	7.0.1
+Version:	8.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	04f39e837aead90dcba3108e6212b470
+# Source0-md5:	27c415b56343585f2e1e3fe583e19c51
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	20d6c8e3dfc97d08d1dec7d0479f924f
+# Source1-md5:	11387ec6c1397b79842728d20aed9fc7
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -103,7 +103,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update.locale
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/README.txt
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
@@ -126,7 +125,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README.txt
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/firefox-bin
 
