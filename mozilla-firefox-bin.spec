@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	9.0.1
+Version:	10.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	a6ac0d7478410455be816c41597d5a9f
+# Source0-md5:	3d68a0e71575dba0d03a2fd51b3de5f1
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2#/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	681292739a1864c15861c05fb23cd99a
+# Source1-md5:	4a62be054e0dfea711afa20769f54d53
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -137,7 +137,7 @@ fi
 %{_libdir}/%{name}/blocklist.xml
 #%{_libdir}/%{name}/browserconfig.properties
 %{_libdir}/%{name}/chrome.manifest
-%{_libdir}/%{name}/omni.jar
+%{_libdir}/%{name}/omni.ja
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
@@ -149,8 +149,8 @@ fi
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/dictionaries
 #%{_libdir}/%{name}/greprefs
-%{_libdir}/%{name}/hyphenation
-%{_libdir}/%{name}/hyphenation/hyph_en_US.dic
+#%{_libdir}/%{name}/hyphenation
+#%{_libdir}/%{name}/hyphenation/hyph_en_US.dic
 %{_libdir}/%{name}/icons
 #%{_libdir}/%{name}/modules
 #%{_libdir}/%{name}/res
