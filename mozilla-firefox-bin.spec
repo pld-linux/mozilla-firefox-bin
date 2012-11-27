@@ -155,7 +155,8 @@ fi
 #%{_libdir}/%{name}/modules
 #%{_libdir}/%{name}/res
 %{_libdir}/%{name}/searchplugins
-%{_libdir}/%{name}/webapprt*
+%{_libdir}/%{name}/webapprt
+%attr(755,root,root) %{_libdir}/%{name}/webapprt-stub
 
 %dir %{_libdir}/%{name}/extensions
 # the signature of the default theme
