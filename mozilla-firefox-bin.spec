@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	21.0
+Version:	22.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	42b67cb406c3245ec4b24b0e9314aa8d
+# Source0-md5:	997543bf6f142ab5227ff4519cd78559
 Source1:	http://releases.mozilla.org/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	ff4e8af2ad953aacacd348a78325669f
+# Source1-md5:	4c9e49ff99eb7fddb8bfa5cd12d57508
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -95,6 +95,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freebl3,nss3,nssckbi,nssdbm3,nssutil
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
 # mozldap
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{ldap,ldif,prldap,ssldap}60.so
+grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
+	dependentlibs.list > $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
 # remove update notifier, we prefer rpm packages for updating
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
@@ -104,7 +106,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -156,6 +157,7 @@ fi
 %{_libdir}/%{name}/browser/chrome
 %{_libdir}/%{name}/browser/icons
 %{_libdir}/%{name}/defaults
+%{_libdir}/%{name}/dependentlibs.list
 %{_libdir}/%{name}/dictionaries
 #%{_libdir}/%{name}/greprefs
 #%{_libdir}/%{name}/hyphenation
