@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	22.0
+Version:	23.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	997543bf6f142ab5227ff4519cd78559
+# Source0-md5:	f0394ba424d130a33cc10e80060860dc
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	4c9e49ff99eb7fddb8bfa5cd12d57508
+# Source1-md5:	1367d2fe2f68db240a1e2d79815a01a1
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
