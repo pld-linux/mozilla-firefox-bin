@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	23.0.1
+Version:	24.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	d3f7ffe6c42a04b2c07d138421a78a38
+# Source0-md5:	87168c5d4fbb8ff16d6dcd658f8b9d13
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	22068fea8fa284fc34de6a345ee9b796
+# Source1-md5:	e0e72d002bb95e35c12a3d8d858d74d7
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
