@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	26.0
+Version:	27.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	92f89c9e4f8325e947de8918efb18e55
+# Source0-md5:	2711961e5fcccbb224625a77fd0f4422
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	4b74154431b8a3766fad4fe4fe1f9f7c
+# Source1-md5:	ea3eb21e260647bfbe5f308bff74d6f0
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
@@ -20,7 +20,7 @@ BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
-Requires:	nss >=3.12.10
+Requires:	nss >= 3.15.4
 Requires:	sqlite3 >= 3.6.22-2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
