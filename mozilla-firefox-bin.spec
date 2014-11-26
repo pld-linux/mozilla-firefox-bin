@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	33.0.1
+Version:	33.1.1
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	7433e8d37ca1f6dcd43ecdf7eabaf575
+# Source0-md5:	25d083558c71a02b78044892066ebf5b
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	54fc9fd4fe9524c28bb0403d17e300e1
+# Source1-md5:	9e0ee774f648c0eaf97afb9f8322281e
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 #Patch0:		%{name}-agent.patch
