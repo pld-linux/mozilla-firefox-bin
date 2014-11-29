@@ -3,7 +3,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	33.1.1
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
@@ -12,12 +12,10 @@ Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{
 # Source1-md5:	9e0ee774f648c0eaf97afb9f8322281e
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
-#Patch0:		%{name}-agent.patch
-#Patch1:		%{name}-ti-agent.patch
-#Patch2:		nochilds.patch
 URL:		http://www.mozilla.org/projects/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
+Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nss >= 1:3.15.4
@@ -58,13 +56,6 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %ifarch %{x8664}
 %{__tar} jxf %{SOURCE1} --strip-components=1
 %endif
-%if "%{pld_release}" == "th"
-#%patch0 -p0
-%endif
-%if "%{pld_release}" == "ti"
-#%patch1 -p0
-%endif
-#%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -102,6 +93,7 @@ grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsm
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater.ini
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update.locale
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update-settings.ini
 rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
@@ -118,8 +110,10 @@ exit 0
 
 %post
 %update_browser_plugins
+%update_desktop_database_post
 
 %postun
+%update_desktop_database_postun
 if [ "$1" = 0 ]; then
 	%update_browser_plugins
 fi
