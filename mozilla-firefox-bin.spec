@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	35.0.1
+Version:	36.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	a0648a001a563fbe6db60fd7acc3c8e6
+# Source0-md5:	0f2dd2492920ae0fc2e4124c0fb13542
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	6ac73be39580fb2eb3368e348b0a2574
+# Source1-md5:	2e5e3eadccc9843121bb53f8ee8679d8
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
@@ -72,29 +72,26 @@ cp -a browser/icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/browser/plugins
 
 # use system dict
-rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
+rm -r $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
 ln -s %{_datadir}/myspell $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
 
 # use system sqlite
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/libsqlite3.so
-ln -s /%{_lib}/libsqlite3.so.0 $RPM_BUILD_ROOT%{_libdir}/%{name}/libsqlite3.so
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.so
+ln -s /%{_lib}/libsqlite3.so.0 $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.so
 
 # never package these
 # nss
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freebl3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freebl3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
 # nspr
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
-# mozldap
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{ldap,ldif,prldap,ssldap}60.so
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
 grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
 	dependentlibs.list > $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
 # remove update notifier, we prefer rpm packages for updating
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/updater.ini
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update.locale
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/update-settings.ini
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/updater.ini
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/update-settings.ini
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
@@ -138,14 +135,12 @@ fi
 %dir %{_libdir}/%{name}/browser/components
 %{_libdir}/%{name}/browser/components/components.manifest
 %attr(755,root,root) %{_libdir}/%{name}/browser/components/libbrowsercomps.so
-#%{_libdir}/%{name}/browserconfig.properties
 %{_libdir}/%{name}/chrome.manifest
 %{_libdir}/%{name}/omni.ja
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
 %attr(755,root,root) %{_libdir}/%{name}/precomplete
-%attr(755,root,root) %{_libdir}/%{name}/mozilla-xremote-client
 %attr(755,root,root) %{_libdir}/%{name}/plugin-container
 
 %{_libdir}/%{name}/browser/chrome
@@ -153,12 +148,7 @@ fi
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/dependentlibs.list
 %{_libdir}/%{name}/dictionaries
-#%{_libdir}/%{name}/greprefs
-#%{_libdir}/%{name}/hyphenation
-#%{_libdir}/%{name}/hyphenation/hyph_en_US.dic
 %{_libdir}/%{name}/icons
-#%{_libdir}/%{name}/modules
-#%{_libdir}/%{name}/res
 %{_libdir}/%{name}/browser/searchplugins
 %{_libdir}/%{name}/webapprt
 %attr(755,root,root) %{_libdir}/%{name}/webapprt-stub
@@ -167,18 +157,11 @@ fi
 # the signature of the default theme
 %{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
 
-#%dir %{_libdir}/%{name}/distribution
-#%dir %{_libdir}/%{name}/distribution/extensions
-#%{_libdir}/%{name}/distribution/extensions/testpilot@labs.mozilla.com.xpi
-
 %dir %{_libdir}/%{name}/components
 %attr(755,root,root) %{_libdir}/%{name}/components/*.so
 %{_libdir}/%{name}/components/components.manifest
-#%{_libdir}/%{name}/components/*.js
-#%{_libdir}/%{name}/components/*.xpt
 
 %dir %{_libdir}/%{name}/browser/plugins
-#%attr(755,root,root) %{_libdir}/%{name}/plugins/libnullplugin.so
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 %attr(755,root,root) %{_libdir}/%{name}/*.sh
 
@@ -186,6 +169,11 @@ fi
 %attr(755,root,root) %{_libdir}/%{name}/crashreporter
 %{_libdir}/%{name}/browser/crashreporter-override.ini
 %{_libdir}/%{name}/crashreporter.ini
+
+%dir %{_libdir}/%{name}/gmp-clearkey
+%dir %{_libdir}/%{name}/gmp-clearkey/0.1
+%{_libdir}/%{name}/gmp-clearkey/0.1/clearkey.info
+%attr(755,root,root) %{_libdir}/%{name}/gmp-clearkey/0.1/libclearkey.so
 
 %{_pixmapsdir}/%{name}.png
 %{_desktopdir}/%{name}.desktop
