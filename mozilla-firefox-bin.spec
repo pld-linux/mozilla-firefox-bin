@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	39.0
+Version:	40.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	5018deec1f7e992deb251a8fc5f0ffd3
+# Source0-md5:	4d3e29bba3d8b75c607247c378a583ac
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	b6df9d6f183c80703bd16d2281a4a74a
+# Source1-md5:	0cc7b398175a48144f3fd658a2ff052c
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		http://www.mozilla.org/projects/firefox/
@@ -149,7 +149,6 @@ fi
 %{_libdir}/%{name}/dependentlibs.list
 %{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/icons
-%{_libdir}/%{name}/browser/searchplugins
 %{_libdir}/%{name}/webapprt
 %attr(755,root,root) %{_libdir}/%{name}/webapprt-stub
 
