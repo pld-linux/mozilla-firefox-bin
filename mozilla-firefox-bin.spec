@@ -12,7 +12,7 @@ Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{
 # Source1-md5:	59753c8c399fcb869853971f93a8dbdd
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
-URL:		http://www.mozilla.org/projects/firefox/
+URL:		https://www.mozilla.org/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
@@ -34,8 +34,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_libdir}/%{name}/components
 # list of script capabilities (regexps) not to be used in Provides
-%define		_noautoprov			%{moz_caps}
-%define		_noautoreq  		%{_noautoprov} %{sqlite_caps} libnotify.so.1
+%define		_noautoprov		%{moz_caps}
+%define		_noautoreq		%{_noautoprov} %{sqlite_caps} libnotify.so.1
 
 # no debuginfo available
 %define		_enable_debug_packages	0
