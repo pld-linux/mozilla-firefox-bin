@@ -18,7 +18,8 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
-Requires:	nss >= 1:3.15.4
+Requires:	nspr >= 1:4.10.10
+Requires:	nss >= 1:3.20.2
 Requires:	sqlite3 >= 3.8.11.1
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
