@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	44.0.2
+Version:	45.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	7ba4c9a1a4934f9cc2353accf12f2f6d
+# Source0-md5:	925c16c0a20c2d5e6f379a408c51b476
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	745e30078ef419558f5d81382be4d6cd
+# Source1-md5:	635129b13896d1dda33f6859d3c5b23f
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -18,8 +18,8 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
-Requires:	nspr >= 1:4.10.10
-Requires:	nss >= 1:3.21
+Requires:	nspr >= 1:4.12
+Requires:	nss >= 1:3.21.1
 Requires:	sqlite3 >= 3.8.11.1
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -136,7 +136,6 @@ fi
 %dir %{_libdir}/%{name}/browser/components
 %{_libdir}/%{name}/browser/components/components.manifest
 %attr(755,root,root) %{_libdir}/%{name}/browser/components/libbrowsercomps.so
-%{_libdir}/%{name}/chrome.manifest
 %{_libdir}/%{name}/omni.ja
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
@@ -155,11 +154,10 @@ fi
 
 %dir %{_libdir}/%{name}/browser/extensions
 # the signature of the default theme
-%{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}
+%{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
 
-%dir %{_libdir}/%{name}/components
-%attr(755,root,root) %{_libdir}/%{name}/components/*.so
-%{_libdir}/%{name}/components/components.manifest
+%dir %{_libdir}/%{name}/browser/features
+%{_libdir}/%{name}/browser/features/loop@mozilla.org.xpi
 
 %dir %{_libdir}/%{name}/browser/plugins
 %attr(755,root,root) %{_libdir}/%{name}/*.so
