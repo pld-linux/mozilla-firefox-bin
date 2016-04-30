@@ -152,6 +152,8 @@ fi
 %{_libdir}/%{name}/webapprt
 %attr(755,root,root) %{_libdir}/%{name}/webapprt-stub
 
+%attr(755,root,root) %{_libdir}/%{name}/gtk2/libmozgtk.so
+
 %dir %{_libdir}/%{name}/browser/extensions
 # the signature of the default theme
 %{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
