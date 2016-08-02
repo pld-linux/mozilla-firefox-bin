@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	47.0.1
+Version:	48.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	bf087a76d5a16b86c80e3dc101b47bfc
+# Source0-md5:	b989a0b4ec6e23531e548b1ddb7e9316
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	bdd7845623124565b6989972849431e9
+# Source1-md5:	6ad12ca3f535a429ad35a61b2f33a762
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -19,8 +19,8 @@ Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nspr >= 1:4.12
-Requires:	nss >= 1:3.21.1
-Requires:	sqlite3 >= 3.8.11.1
+Requires:	nss >= 1:3.24
+Requires:	sqlite3 >= 3.12.2
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
@@ -82,7 +82,7 @@ ln -s /%{_lib}/libsqlite3.so.0 $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.s
 
 # never package these
 # nss
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freebl3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freeblpriv3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
 # nspr
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
 grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
@@ -127,6 +127,7 @@ fi
 
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
+%{_libdir}/%{name}/icudt56l.dat
 
 %dir %{_libdir}/%{name}/browser
 %{_libdir}/%{name}/browser/blocklist.xml
@@ -149,8 +150,6 @@ fi
 %{_libdir}/%{name}/dependentlibs.list
 %{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/icons
-%{_libdir}/%{name}/webapprt
-%attr(755,root,root) %{_libdir}/%{name}/webapprt-stub
 
 %dir %{_libdir}/%{name}/gtk2
 %attr(755,root,root) %{_libdir}/%{name}/gtk2/libmozgtk.so
