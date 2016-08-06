@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	45.2.0esr
+Version:	45.3.0esr
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	881bc360f636249356939387f9d8e22c
+# Source0-md5:	20e0e40e4594cde8f95f03590b611487
 Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	5bb058aa8b24f97017ee7ca33a9e3ebe
+# Source1-md5:	919a04bbbdd72e6fbefe8657cba4cbc7
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -20,7 +20,7 @@ Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nspr >= 1:4.12
 Requires:	nss >= 1:3.21.1
-Requires:	sqlite3 >= 3.8.11.1
+Requires:	sqlite3 >= 3.9.1
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
