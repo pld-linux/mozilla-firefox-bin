@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	48.0.1
+Version:	49.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	0a74f7f88dd66e08d483d4d7c67b6568
-Source1:	http://download.cdn.mozilla.net/pub/mozilla.org/%{realname}/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	6b061fcabea1677cc58cf91466885c54
+Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
+# Source0-md5:	e5c673be4e398f437382c14d5846a438
+Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
+# Source1-md5:	dfb60ef3b3cee97c3e6a2684969b7dbf
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -19,8 +19,8 @@ Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nspr >= 1:4.12
-Requires:	nss >= 1:3.24
-Requires:	sqlite3 >= 3.12.2
+Requires:	nss >= 1:3.25
+Requires:	sqlite3 >= 3.13.0
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
@@ -159,9 +159,9 @@ fi
 %{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
 
 %dir %{_libdir}/%{name}/browser/features
-%{_libdir}/%{name}/browser/features/loop@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
+%{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
 
 %dir %{_libdir}/%{name}/browser/plugins
 %attr(755,root,root) %{_libdir}/%{name}/*.so
