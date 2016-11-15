@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	49.0.2
+Version:	50.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	2fc314e8b441baeb47700f32d30bdf53
+# Source0-md5:	6bc382272ab7ced765f5bec8f23faf54
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	cb80bdc2129d9faa9a3024480d3239e7
+# Source1-md5:	08982adb570fd139ed404468a5ba3909
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -151,6 +151,9 @@ fi
 %{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/icons
 
+%dir %{_libdir}/%{name}/fonts
+%{_libdir}/%{name}/fonts/EmojiOneMozilla.ttf
+
 %dir %{_libdir}/%{name}/gtk2
 %attr(755,root,root) %{_libdir}/%{name}/gtk2/libmozgtk.so
 
@@ -159,6 +162,7 @@ fi
 %{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
 
 %dir %{_libdir}/%{name}/browser/features
+%{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
