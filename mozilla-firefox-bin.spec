@@ -19,7 +19,7 @@ Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nspr >= 1:4.12
-Requires:	nss >= 1:3.25
+Requires:	nss >= 1:3.26.2
 Requires:	sqlite3 >= 3.13.0
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
