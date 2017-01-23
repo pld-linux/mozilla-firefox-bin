@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	50.1.0
+Version:	51.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	47fb3edd773a9d107de2076be2b1647f
+# Source0-md5:	0b37610d6a3e9cbbd37478e8356d93c3
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	335635575a221d4eeeb83865be405b51
+# Source1-md5:	371ddf3c87a001e5405b676f99c10793
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -18,9 +18,9 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
-Requires:	nspr >= 1:4.12
-Requires:	nss >= 1:3.26.2
-Requires:	sqlite3 >= 3.13.0
+Requires:	nspr >= 1:4.13.1
+Requires:	nss >= 1:3.28.1
+Requires:	sqlite3 >= 3.14.1
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
