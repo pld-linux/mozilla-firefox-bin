@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	51.0.1
+Version:	52.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	9a5b67e9d759a1e4df004294a24b2b43
+# Source0-md5:	39228da4947010a63a99aec4b648b916
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	bd93f2652d1d90d59ae462439a93c85f
+# Source1-md5:	e821a6ecc69c6dea96db818d33a8873b
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -19,8 +19,8 @@ Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	myspell-common
 Requires:	nspr >= 1:4.13.1
-Requires:	nss >= 1:3.28.1
-Requires:	sqlite3 >= 3.14.1
+Requires:	nss >= 1:3.28.3
+Requires:	sqlite3 >= 3.17.0
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
@@ -127,20 +127,19 @@ fi
 
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
-%{_libdir}/%{name}/icudt56l.dat
+%{_libdir}/%{name}/chrome.manifest
+%{_libdir}/%{name}/icudt58l.dat
 
 %dir %{_libdir}/%{name}/browser
 %{_libdir}/%{name}/browser/blocklist.xml
 %{_libdir}/%{name}/browser/chrome.manifest
 %{_libdir}/%{name}/browser/omni.ja
 
-%dir %{_libdir}/%{name}/browser/components
-%{_libdir}/%{name}/browser/components/components.manifest
-%attr(755,root,root) %{_libdir}/%{name}/browser/components/libbrowsercomps.so
 %{_libdir}/%{name}/omni.ja
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
+%attr(755,root,root) %{_libdir}/%{name}/minidump-analyzer
 %attr(755,root,root) %{_libdir}/%{name}/precomplete
 %attr(755,root,root) %{_libdir}/%{name}/plugin-container
 
