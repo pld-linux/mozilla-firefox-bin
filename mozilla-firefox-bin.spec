@@ -21,6 +21,7 @@ Requires:	myspell-common
 Requires:	nspr >= 1:4.13.1
 Requires:	nss >= 1:3.28.3
 Requires:	sqlite3 >= 3.17.0
+Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
