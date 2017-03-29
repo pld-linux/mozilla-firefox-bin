@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	52.0.1
+Version:	52.0.2
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	d627c193042037ffd76e774ced03c8f6
+# Source0-md5:	755de3b1ea05d7c83313c7a32dcc2a9d
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	bae88dd5ee29aae1e8dc52feeefacfbc
+# Source1-md5:	877d12412f6ba19cda3168d5f0c90ceb
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -163,6 +163,7 @@ fi
 
 %dir %{_libdir}/%{name}/browser/features
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
+%{_libdir}/%{name}/browser/features/deployment-checker@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
