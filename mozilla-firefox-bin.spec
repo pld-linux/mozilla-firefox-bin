@@ -2,14 +2,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	52.0.2
+Version:	53.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	755de3b1ea05d7c83313c7a32dcc2a9d
+# Source0-md5:	44221b9016ba4445a4c862978bee7ddc
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	877d12412f6ba19cda3168d5f0c90ceb
+# Source1-md5:	faca6dfe64df2d8e6acd7b9876b5aa4e
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -17,9 +17,10 @@ BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
+Requires:	cpuinfo(sse2)
 Requires:	myspell-common
 Requires:	nspr >= 1:4.13.1
-Requires:	nss >= 1:3.28.3
+Requires:	nss >= 1:3.29.5
 Requires:	sqlite3 >= 3.17.0
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -163,7 +164,6 @@ fi
 
 %dir %{_libdir}/%{name}/browser/features
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
-%{_libdir}/%{name}/browser/features/deployment-checker@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
@@ -179,7 +179,7 @@ fi
 
 %dir %{_libdir}/%{name}/gmp-clearkey
 %dir %{_libdir}/%{name}/gmp-clearkey/0.1
-%{_libdir}/%{name}/gmp-clearkey/0.1/clearkey.info
+%{_libdir}/%{name}/gmp-clearkey/0.1/manifest.json
 %attr(755,root,root) %{_libdir}/%{name}/gmp-clearkey/0.1/libclearkey.so
 
 %{_pixmapsdir}/%{name}.png
