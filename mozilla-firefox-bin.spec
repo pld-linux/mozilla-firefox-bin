@@ -1,4 +1,13 @@
+# Conditional build:
+%bcond_without	system_ffmpeg	# build with internal ffmpeg library
+%bcond_without	system_gtk	# build with internal gtk library
+%bcond_without	system_sqlite	# build with internal sqlite library
+
 %define		realname	firefox
+%define		avcodec_soname_ver	57
+%define		avutil_soname_ver	55
+%define		gtk_soname_ver		0
+%define		sqlite_soname_ver	0
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
@@ -18,10 +27,12 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	cpuinfo(sse2)
+%{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2}
+%{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
 Requires:	nspr >= 1:4.13.1
 Requires:	nss >= 1:3.29.5
-Requires:	sqlite3 >= 3.17.0
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.17.0}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -78,9 +89,23 @@ cp -a browser/icons/mozicon128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 rm -r $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
 ln -s %{_datadir}/myspell $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
 
+%if %{with system_ffmpeg}
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavcodec.so
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavutil.so
+ln -s %{_libdir}/libavcodec.so.%{avcodec_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavcodec.so
+ln -s %{_libdir}/libavutil.so.%{avutil_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavutil.so
+%endif
+
+%if %{with system_gtk}
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozgtk.so
+ln -s %{_libdir}/libgtk-3.so.%{gtk_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozgtk.so
+%endif
+
+%if %{with system_sqlite}
 # use system sqlite
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.so
-ln -s /%{_lib}/libsqlite3.so.0 $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.so
+ln -s /%{_lib}/libsqlite3.so.%{sqlite_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozsqlite3.so
+%endif
 
 # never package these
 # nss
