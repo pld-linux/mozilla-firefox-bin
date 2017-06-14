@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	53.0.3
+Version:	54.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	0339f0a8be0e5af9a206bdfe67689cf8
+# Source0-md5:	8920abb3cd3a6be506184c882d7084fa
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	6219384d2631020adf1b5bb96f73621d
+# Source1-md5:	a4f5d6798ea580f126080270d5357739
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,8 +30,8 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
-Requires:	nspr >= 1:4.13.1
-Requires:	nss >= 1:3.29.5
+Requires:	nspr >= 1:4.14
+Requires:	nss >= 1:3.30.2
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.17.0}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -167,8 +167,9 @@ fi
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
 %attr(755,root,root) %{_libdir}/%{name}/minidump-analyzer
-%attr(755,root,root) %{_libdir}/%{name}/precomplete
+%attr(755,root,root) %{_libdir}/%{name}/pingsender
 %attr(755,root,root) %{_libdir}/%{name}/plugin-container
+%attr(755,root,root) %{_libdir}/%{name}/precomplete
 
 %{_libdir}/%{name}/browser/chrome
 %{_libdir}/%{name}/browser/icons
@@ -191,6 +192,7 @@ fi
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
+%{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
 
 %dir %{_libdir}/%{name}/browser/plugins
