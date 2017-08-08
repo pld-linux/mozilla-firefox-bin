@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	54.0.1
+Version:	55.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	7ff2116227379fedb20c2d506716d672
+# Source0-md5:	e778d12fe3692c2a16616c7351d52bb7
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	6acb8696058eb739052c3f21ed6cd1ca
+# Source1-md5:	e9c702dc9a84f6b8f7effd08cd286c4f
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -27,12 +27,12 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	cpuinfo(sse2)
-%{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2}
+%{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2.1}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
-Requires:	nspr >= 1:4.14
-Requires:	nss >= 1:3.30.2
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.17.0}
+Requires:	nspr >= 1:4.15
+Requires:	nss >= 1:3.31
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.19.3}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -190,9 +190,12 @@ fi
 
 %dir %{_libdir}/%{name}/browser/features
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
+%{_libdir}/%{name}/browser/features/clicktoplay-rollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
+%{_libdir}/%{name}/browser/features/followonsearch@mozilla.com.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
+%{_libdir}/%{name}/browser/features/shield-recipe-client@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
 
 %dir %{_libdir}/%{name}/browser/plugins
