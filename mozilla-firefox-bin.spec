@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	55.0.3
+Version:	56.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	000f6c20848f39eded6ffbfd779b2aab
+# Source0-md5:	6f6805ce471f16a91debb8e6ec939b29
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	3022b3bd6cfc8022a55f7a2d1cde1b2a
+# Source1-md5:	a23753370042da820dc40570d8fdc48c
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -155,7 +155,7 @@ fi
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/chrome.manifest
-%{_libdir}/%{name}/icudt58l.dat
+%{_libdir}/%{name}/icudt59l.dat
 
 %dir %{_libdir}/%{name}/browser
 %{_libdir}/%{name}/browser/blocklist.xml
@@ -189,11 +189,14 @@ fi
 %{_libdir}/%{name}/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
 
 %dir %{_libdir}/%{name}/browser/features
+%{_libdir}/%{name}/browser/features/activity-stream@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/clicktoplay-rollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
 %{_libdir}/%{name}/browser/features/followonsearch@mozilla.com.xpi
+%{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
+%{_libdir}/%{name}/browser/features/onboarding@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/shield-recipe-client@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
