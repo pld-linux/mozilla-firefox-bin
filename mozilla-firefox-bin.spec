@@ -30,8 +30,8 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2.1}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
-Requires:	nspr >= 1:4.15
-Requires:	nss >= 1:3.31
+Requires:	nspr >= 1:4.16
+Requires:	nss >= 1:3.32.1
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.19.3}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
