@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	57.0.4
+Version:	58.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	326ffbddd01287e199735ebd6c43e7de
+# Source0-md5:	a087a38b0ce7a0560a270d9d8983bb3d
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	39c5ef862fee71230617b9fd6c7ffc0f
+# Source1-md5:	1bbcef85e2988068d4736a45af290b7a
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -27,12 +27,12 @@ BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
 Requires:	cpuinfo(sse2)
-%{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.2.1}
+%{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
-Requires:	nspr >= 1:4.16
-Requires:	nss >= 1:3.32.1
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.19.3}
+Requires:	nspr >= 1:4.17
+Requires:	nss >= 1:3.34.1
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.20.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -191,7 +191,6 @@ fi
 %dir %{_libdir}/%{name}/browser/features
 %{_libdir}/%{name}/browser/features/activity-stream@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
-%{_libdir}/%{name}/browser/features/e10srollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
 %{_libdir}/%{name}/browser/features/followonsearch@mozilla.com.xpi
 %{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
@@ -202,7 +201,6 @@ fi
 
 %dir %{_libdir}/%{name}/browser/plugins
 %attr(755,root,root) %{_libdir}/%{name}/*.so
-%attr(755,root,root) %{_libdir}/%{name}/*.sh
 
 # crashreporter
 %attr(755,root,root) %{_libdir}/%{name}/crashreporter
