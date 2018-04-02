@@ -12,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	59.0.2
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
@@ -30,9 +30,9 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	myspell-common
-Requires:	nspr >= 1:4.17
-Requires:	nss >= 1:3.34.1
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.20.1}
+Requires:	nspr >= 1:4.18
+Requires:	nss >= 1:3.35
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.21.0}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
