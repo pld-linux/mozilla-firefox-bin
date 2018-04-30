@@ -1,5 +1,5 @@
 # Conditional build:
-%bcond_without	system_ffmpeg	# build with internal ffmpeg library
+%bcond_with	system_ffmpeg	# build with system ffmpeg library
 %bcond_without	system_gtk	# build with internal gtk library
 %bcond_without	system_sqlite	# build with internal sqlite library
 
@@ -12,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	59.0.2
-Release:	2
+Release:	3
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
