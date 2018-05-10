@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	59.0.2
-Release:	3
+Version:	60.0
+Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	f2154871cd14a1a8b5c7a9e4cf08bf87
+# Source0-md5:	623a30a7bb00f74428c1981d52191468
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	34cae561957fe30e17f1b76e4282ebbf
+# Source1-md5:	8f72b51fb4106848a20967a574e82d79
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -155,7 +155,6 @@ fi
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
 %{_libdir}/%{name}/chrome.manifest
-%{_libdir}/%{name}/icudt60l.dat
 
 %dir %{_libdir}/%{name}/browser
 %{_libdir}/%{name}/browser/blocklist.xml
@@ -195,7 +194,6 @@ fi
 %{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/onboarding@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
-%{_libdir}/%{name}/browser/features/shield-recipe-client@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
 
 %dir %{_libdir}/%{name}/browser/plugins
