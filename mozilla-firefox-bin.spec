@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	61.0.1
+Version:	62.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	d1c7ae0f03d1936622c7db41fdcda060
+# Source0-md5:	6b8d107be6f4baf38411ce3f59ff7e79
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	e521fb2726f9455ca71c3a9cf5cb74eb
+# Source1-md5:	3152c2f5713f5935a5f8761f1a0e02e7
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -29,10 +29,9 @@ Requires:	browser-plugins >= 2.0
 Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
-Requires:	myspell-common
 Requires:	nspr >= 1:4.19
-Requires:	nss >= 1:3.36.1
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.22.0}
+Requires:	nss >= 1:3.38
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.24.0}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
@@ -85,10 +84,6 @@ cp -a browser/chrome/icons/default/default128.png $RPM_BUILD_ROOT%{_pixmapsdir}/
 
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/browser/plugins
 
-# use system dict
-rm -r $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
-ln -s %{_datadir}/myspell $RPM_BUILD_ROOT%{_libdir}/%{name}/dictionaries
-
 %if %{with system_ffmpeg}
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavcodec.so
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/libmozavutil.so
@@ -126,12 +121,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%pretrans
-if [ -d %{_libdir}/%{name}/dictionaries ] && [ ! -L %{_libdir}/%{name}/dictionaries ]; then
-	mv -v %{_libdir}/%{name}/dictionaries{,.rpmsave}
-fi
-exit 0
 
 %post
 %update_browser_plugins
@@ -173,7 +162,6 @@ fi
 %{_libdir}/%{name}/browser/chrome
 %{_libdir}/%{name}/defaults
 %{_libdir}/%{name}/dependentlibs.list
-%{_libdir}/%{name}/dictionaries
 %{_libdir}/%{name}/icons
 
 %dir %{_libdir}/%{name}/fonts
@@ -186,7 +174,6 @@ fi
 %{_libdir}/%{name}/browser/features/activity-stream@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/aushelper@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/firefox@getpocket.com.xpi
-%{_libdir}/%{name}/browser/features/followonsearch@mozilla.com.xpi
 %{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/onboarding@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
