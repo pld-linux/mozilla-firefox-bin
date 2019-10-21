@@ -30,8 +30,8 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.21
-Requires:	nss >= 1:3.43
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.27.2}
+Requires:	nss >= 1:3.45
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.28.0}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
