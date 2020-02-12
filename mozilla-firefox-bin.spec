@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	72.0.2
-Release:	2
+Version:	73.0
+Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	bc476ebd49fd4fc285e70ca20cb2d86c
+# Source0-md5:	8cb851b0f32c714ac2a4ca6243f6b20c
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	f67582133f442d232e0ac3892232466e
+# Source1-md5:	0cbf1cc059df46f692841f1a45929bbc
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,7 +30,7 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.24
-Requires:	nss >= 1:3.48
+Requires:	nss >= 1:3.49.2
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.30.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -104,7 +104,7 @@ ln -s /%{_lib}/libsqlite3.so.%{sqlite_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{na
 
 # never package these
 # nss
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freeblpriv3,nss3,nssckbi,nssdbm3,nssutil3,smime3,softokn3,ssl3}.*
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freeblpriv3,nss3,nssckbi,nssutil3,smime3,softokn3,ssl3}.*
 # nspr
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
 grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
@@ -143,11 +143,9 @@ fi
 
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/application.ini
-%{_libdir}/%{name}/chrome.manifest
 
 %dir %{_libdir}/%{name}/browser
 %{_libdir}/%{name}/browser/blocklist.xml
-%{_libdir}/%{name}/browser/chrome.manifest
 %{_libdir}/%{name}/browser/omni.ja
 
 %{_libdir}/%{name}/omni.ja
