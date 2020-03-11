@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	73.0.1
+Version:	74.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	66518a1a4cd01873c0aaf35614d592db
+# Source0-md5:	072c4352ef984f95dbe41a6a01573c87
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	5ec0720346dc1e6a50c77619ebc43c7b
+# Source1-md5:	e0e52513b318893d7f13006eedd416e6
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -29,9 +29,9 @@ Requires:	browser-plugins >= 2.0
 Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
-Requires:	nspr >= 1:4.24
-Requires:	nss >= 1:3.49.2
-%{?with_system_sqlite:Requires:	sqlite3 >= 3.30.1}
+Requires:	nspr >= 1:4.25
+Requires:	nss >= 1:3.50
+%{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
