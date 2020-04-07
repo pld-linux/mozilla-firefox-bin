@@ -1,7 +1,7 @@
 # Conditional build:
 %bcond_with	system_ffmpeg	# build with system ffmpeg library
 %bcond_without	system_gtk	# build with internal gtk library
-%bcond_without	system_sqlite	# build with internal sqlite library
+%bcond_with	system_sqlite	# build with internal sqlite library
 
 %define		realname	firefox
 %define		avcodec_soname_ver	57
@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	74.0.1
+Version:	75.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	111584b081be64f6a55f0c7041e4f9f9
+# Source0-md5:	f27becb6344076e176d073caf34f935b
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	f3951951bd482e94f25ccb1e7eb005c0
+# Source1-md5:	d58eb3e13f8fe0e1380ea73690bf13db
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,7 +30,7 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.25
-Requires:	nss >= 1:3.50
+Requires:	nss >= 1:3.51
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
