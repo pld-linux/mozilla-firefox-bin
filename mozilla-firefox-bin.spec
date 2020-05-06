@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	75.0
+Version:	76.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	f27becb6344076e176d073caf34f935b
+# Source0-md5:	8085b0fd1f47ca972e0ff460cfc207c7
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	d58eb3e13f8fe0e1380ea73690bf13db
+# Source1-md5:	50232b57b150077b685a6608d6e90edf
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,7 +30,7 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.25
-Requires:	nss >= 1:3.51
+Requires:	nss >= 1:3.51.1
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -145,7 +145,6 @@ fi
 %{_libdir}/%{name}/application.ini
 
 %dir %{_libdir}/%{name}/browser
-%{_libdir}/%{name}/browser/blocklist.xml
 %{_libdir}/%{name}/browser/omni.ja
 
 %{_libdir}/%{name}/omni.ja
