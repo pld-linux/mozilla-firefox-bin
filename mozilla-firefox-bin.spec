@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	89.0.2
+Version:	90.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	290a7ad9d981604b678df4e50793f8f6
+# Source0-md5:	970c89ff9d6a9feea08fa84da8bf34d4
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	7dc77d2c0c05ca6745728f2e7cdfbfcc
+# Source1-md5:	a6d4864fe50c32d58cf07c33d8e1d0fa
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,8 +30,8 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
-Requires:	nspr >= 1:4.30
-Requires:	nss >= 1:3.63.1
+Requires:	nspr >= 1:4.31
+Requires:	nss >= 1:3.66
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -164,9 +164,6 @@ fi
 
 %dir %{_libdir}/%{name}/fonts
 %{_libdir}/%{name}/fonts/TwemojiMozilla.ttf
-
-%dir %{_libdir}/%{name}/gtk2
-%attr(755,root,root) %{_libdir}/%{name}/gtk2/libmozgtk.so
 
 %dir %{_libdir}/%{name}/browser/features
 %{_libdir}/%{name}/browser/features/doh-rollout@mozilla.org.xpi
