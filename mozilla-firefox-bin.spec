@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	96.0.3
+Version:	97.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	e1ec721e7362b8971fa5da21713d6d69
+# Source0-md5:	dc1cb65fd4b02923be0d5bc0f04936d2
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	205d5b565ff66304f6686ac40e17539c
+# Source1-md5:	b54106b46a948d7bc661c72fa6c9cf1c
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -31,7 +31,7 @@ Requires:	cpuinfo(sse2)
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.33
-Requires:	nss >= 1:3.73.1
+Requires:	nss >= 1:3.74
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -169,7 +169,6 @@ fi
 %{_libdir}/%{name}/browser/features/doh-rollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/pictureinpicture@mozilla.org.xpi
-%{_libdir}/%{name}/browser/features/proxy-failover@mozilla.com.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/webcompat-reporter@mozilla.org.xpi
