@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	101.0.1
+Version:	102.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	c616bce10bd42fc881078a36c13b2638
+# Source0-md5:	a0ff9c388aefe756886bc7bcabf30797
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	8a2398282d94301416ceb43a5e48fdd8
+# Source1-md5:	1f83d463994f1910c9046d7894a94272
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -30,8 +30,8 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
-Requires:	nspr >= 1:4.33
-Requires:	nss >= 1:3.78.1
+Requires:	nspr >= 1:4.34
+Requires:	nss >= 1:3.79
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
