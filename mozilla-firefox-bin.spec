@@ -1,6 +1,6 @@
 # Conditional build:
 %bcond_with	system_ffmpeg	# build with system ffmpeg library
-%bcond_without	system_gtk	# build with internal gtk library
+%bcond_with	system_gtk	# build with internal gtk library
 %bcond_with	system_sqlite	# build with internal sqlite library
 
 %define		realname	firefox
@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	102.0.1
+Version:	103.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	c5ddd274fe97df03306a9628df1fd825
+# Source0-md5:	81c03db60790fff62befd988044ac22f
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	54534161a66ee4055f459f55b7983533
+# Source1-md5:	b540b5998ca573523dbafc609086aeaa
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -31,7 +31,7 @@ Requires:	cpuinfo(sse2)
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.34
-Requires:	nss >= 1:3.79
+Requires:	nss >= 1:3.80
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
