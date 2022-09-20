@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	104.0.2
+Version:	105.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	162ffc24b9185c022c841d178a8d0282
+# Source0-md5:	c700ea89038f497e9ecab3c80ee5231e
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	b482f831621cd9c986245c59f619d32a
+# Source1-md5:	b1b1fc01c06a59a3b882c2f1cc2b2424
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -31,7 +31,7 @@ Requires:	cpuinfo(sse2)
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.34.1
-Requires:	nss >= 1:3.81
+Requires:	nss >= 1:3.82
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -166,7 +166,6 @@ fi
 %{_libdir}/%{name}/fonts/TwemojiMozilla.ttf
 
 %dir %{_libdir}/%{name}/browser/features
-%{_libdir}/%{name}/browser/features/doh-rollout@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/formautofill@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/pictureinpicture@mozilla.org.xpi
 %{_libdir}/%{name}/browser/features/screenshots@mozilla.org.xpi
