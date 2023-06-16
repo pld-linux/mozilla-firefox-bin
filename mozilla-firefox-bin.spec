@@ -12,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	114.0.1
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
@@ -152,10 +152,12 @@ fi
 %{_libdir}/%{name}/platform.ini
 %attr(755,root,root) %{_libdir}/%{name}/firefox
 %attr(755,root,root) %{_libdir}/%{name}/firefox-bin
+%attr(755,root,root) %{_libdir}/%{name}/glxtest
 %attr(755,root,root) %{_libdir}/%{name}/minidump-analyzer
 %attr(755,root,root) %{_libdir}/%{name}/pingsender
 %attr(755,root,root) %{_libdir}/%{name}/plugin-container
 %attr(755,root,root) %{_libdir}/%{name}/precomplete
+%attr(755,root,root) %{_libdir}/%{name}/vaapitest
 
 %{_libdir}/%{name}/browser/chrome
 %{_libdir}/%{name}/defaults
