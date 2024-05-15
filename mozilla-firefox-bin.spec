@@ -12,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	126.0
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
@@ -115,7 +115,6 @@ grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsm
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/updater
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/updater.ini
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/update-settings.ini
-rm $RPM_BUILD_ROOT%{_libdir}/%{name}/Throbber-small.gif
 
 # remove unecessary stuff
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/removed-files
@@ -178,8 +177,6 @@ fi
 
 # crashreporter
 %attr(755,root,root) %{_libdir}/%{name}/crashreporter
-%{_libdir}/%{name}/browser/crashreporter-override.ini
-%{_libdir}/%{name}/crashreporter.ini
 
 %dir %{_libdir}/%{name}/gmp-clearkey
 %dir %{_libdir}/%{name}/gmp-clearkey/0.1
