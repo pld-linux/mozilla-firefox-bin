@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	126.0.1
+Version:	127.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	bcc9c68764c155bf9b3035e84560bef9
+# Source0-md5:	24b99ea30bb8221bf8b0cc5bef180cf5
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	6473e186ab8188ec009f02992e6f79c5
+# Source1-md5:	0becde776e6f0d5a229f6293c5c0894d
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -31,7 +31,7 @@ Requires:	cpuinfo(sse2)
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.35
-Requires:	nss >= 1:3.99
+Requires:	nss >= 1:3.100
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
