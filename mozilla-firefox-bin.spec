@@ -11,18 +11,20 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	134.0.2
+Version:	135.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.i686.tar.bz2
-# Source0-md5:	8868e688cd8719078ad5ca6491ee10b1
-Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.bz2?/%{realname}-%{version}.x8664.tar.bz2
-# Source1-md5:	d116ceb23abed920a350f1388014ad52
+Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.i686.tar.xz
+# Source0-md5:	66746f4b80cfa16284300784e89a85fb
+Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
+# Source1-md5:	c733d79b7907fe178b2158236ff34340
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zip
 Requires(post,postun):	desktop-file-utils
 Requires:	browser-plugins >= 2.0
@@ -65,10 +67,10 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 %prep
 %setup -qcT
 %ifarch i686 athlon
-%{__tar} jxf %{SOURCE0} --strip-components=1
+%{__tar} xf %{SOURCE0} --strip-components=1
 %endif
 %ifarch %{x8664}
-%{__tar} jxf %{SOURCE1} --strip-components=1
+%{__tar} xf %{SOURCE1} --strip-components=1
 %endif
 
 %install
