@@ -11,14 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	143.0.3
+Version:	144.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.i686.tar.xz
-# Source0-md5:	92415169849043a6aac380dedb03a128
+# Source0-md5:	5f53ef6dfb649df1ac7238c1e4ed5c19
 Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
-# Source1-md5:	89de93c3534203c3af987dea6d3e0da4
+# Source1-md5:	d5b68813c25a569cd74394ccfd51f116
 Source2:	%{name}.desktop
 Source3:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
@@ -33,7 +33,7 @@ Requires:	cpuinfo(sse2)
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
 Requires:	nspr >= 1:4.36
-Requires:	nss >= 1:3.115.1
+Requires:	nss >= 1:3.116
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
@@ -44,7 +44,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
-%define		moz_caps	libmozalloc.so libmozavcodec.so libmozavutil.so libclearkey.so libgkcodecs.so liblgpllibs.so libmozgtk.so libmozsandbox.so libmozsqlite3.so libmozwayland.so libxpcom.so libxul.so
+%define		moz_caps	libmozalloc.so libmozavcodec.so libmozavutil.so libclearkey.so libgkcodecs.so liblgpllibs.so libmozgtk.so libmozinference.so libmozsandbox.so libmozsqlite3.so libmozwayland.so libxpcom.so libxul.so
 %define		sqlite_caps	libsqlite3.so
 
 # list of files (regexps) which don't generate Provides
