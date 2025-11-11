@@ -11,16 +11,14 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	144.0.2
+Version:	145.0
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
-Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-i686/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.i686.tar.xz
-# Source0-md5:	eda61c56e0c3b428f09ed89bdb1585ff
-Source1:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
-# Source1-md5:	5d9f59b11d4ec601c4554fc86282dc2d
-Source2:	%{name}.desktop
-Source3:	%{name}.sh
+Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
+# Source0-md5:	fe8ca3dd3eb2fdc8d04f0db175cde598
+Source1:	%{name}.desktop
+Source2:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
 BuildRequires:	rpmbuild(macros) >= 1.453
 BuildRequires:	tar >= 1:1.22
@@ -32,14 +30,14 @@ Requires:	cpuinfo(sse2)
 %{?with_system_ffmpeg:Requires:	ffmpeg-libs >= 3.4}
 Requires:	glib2 >= 1:2.42
 %{?with_system_gtk:Requires:	gtk+3 >= 3.22}
-Requires:	nspr >= 1:4.36
-Requires:	nss >= 1:3.116
+Requires:	nspr >= 1:4.37
+Requires:	nss >= 1:3.117
 %{?with_system_sqlite:Requires:	sqlite3 >= 3.31.1}
 Suggests:	pulseaudio
 Provides:	wwwbrowser
 Obsoletes:	mozilla-firebird
 Conflicts:	mozilla-firefox
-ExclusiveArch:	i686 athlon %{x8664}
+ExclusiveArch:	%{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
@@ -66,11 +64,8 @@ myślą o zgodności ze standardami, wydajnością i przenośnością.
 
 %prep
 %setup -qcT
-%ifarch i686 athlon
-%{__tar} xf %{SOURCE0} --strip-components=1
-%endif
 %ifarch %{x8664}
-%{__tar} xf %{SOURCE1} --strip-components=1
+%{__tar} xf %{SOURCE0} --strip-components=1
 %endif
 
 %install
@@ -80,9 +75,9 @@ install -d \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
 cp -a . $RPM_BUILD_ROOT%{_libdir}/%{name}
-sed 's,@LIBDIR@,%{_libdir},' %{SOURCE3} > $RPM_BUILD_ROOT%{_bindir}/%{name}
+sed 's,@LIBDIR@,%{_libdir},' %{SOURCE2} > $RPM_BUILD_ROOT%{_bindir}/%{name}
 ln -s %{name} $RPM_BUILD_ROOT%{_bindir}/firefox-bin
-cp -a %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
+cp -a %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 cp -a browser/chrome/icons/default/default128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %browser_plugins_add_browser %{name} -p %{_libdir}/%{name}/browser/plugins
