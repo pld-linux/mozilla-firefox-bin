@@ -11,12 +11,12 @@
 Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
-Version:	151.0
+Version:	151.0.2
 Release:	1
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
-# Source0-md5:	873fbee592d9f34a7cdf6a01139d2367
+# Source0-md5:	18479ade753a8c3067be0a6b455360c3
 Source1:	%{name}.desktop
 Source2:	%{name}.sh
 URL:		https://www.mozilla.org/firefox/
