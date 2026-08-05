@@ -152,6 +152,7 @@ fi
 %attr(755,root,root) %{_libdir}/%{name}/pingsender
 %attr(755,root,root) %{_libdir}/%{name}/precomplete
 %attr(755,root,root) %{_libdir}/%{name}/vaapitest
+%attr(755,root,root) %{_libdir}/%{name}/vulkantest
 
 %{_libdir}/%{name}/browser/chrome
 %{_libdir}/%{name}/defaults
@@ -175,8 +176,6 @@ fi
 %dir %{_libdir}/%{name}/gmp-clearkey/0.1
 %{_libdir}/%{name}/gmp-clearkey/0.1/manifest.json
 %attr(755,root,root) %{_libdir}/%{name}/gmp-clearkey/0.1/libclearkey.so
-
-%attr(755,root,root) %{_libdir}/%{name}/vulkantest
 
 %{_pixmapsdir}/%{name}.png
 %{_desktopdir}/%{name}.desktop
