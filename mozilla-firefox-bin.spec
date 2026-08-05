@@ -164,13 +164,19 @@ fi
 %dir %{_libdir}/%{name}/browser/plugins
 %attr(755,root,root) %{_libdir}/%{name}/*.so
 
+%attr(755,root,root) %{_libdir}/%{name}/crashhelper
 # crashreporter
 %attr(755,root,root) %{_libdir}/%{name}/crashreporter
+
+%dir %{_libdir}/%{name}/distribution
+%{_libdir}/%{name}/distribution/distribution.ini
 
 %dir %{_libdir}/%{name}/gmp-clearkey
 %dir %{_libdir}/%{name}/gmp-clearkey/0.1
 %{_libdir}/%{name}/gmp-clearkey/0.1/manifest.json
 %attr(755,root,root) %{_libdir}/%{name}/gmp-clearkey/0.1/libclearkey.so
+
+%attr(755,root,root) %{_libdir}/%{name}/vulkantest
 
 %{_pixmapsdir}/%{name}.png
 %{_desktopdir}/%{name}.desktop
