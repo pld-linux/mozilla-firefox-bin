@@ -105,7 +105,7 @@ ln -s /%{_lib}/libsqlite3.so.%{sqlite_soname_ver} $RPM_BUILD_ROOT%{_libdir}/%{na
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{freeblpriv3,nss3,nssutil3,smime3,softokn3,ssl3}.*
 # nspr
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}/lib{nspr4,plc4,plds4}.so
-grep -v 'libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
+grep -v 'libfreeblpriv3\|libnspr4.so\|libplc4.so\|libplds4.so\|libnssutil3.so\|libnss3.so\|libsmime3.so\|libssl3.so' \
 	dependentlibs.list > $RPM_BUILD_ROOT%{_libdir}/%{name}/dependentlibs.list
 
 # remove update notifier, we prefer rpm packages for updating
