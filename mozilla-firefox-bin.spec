@@ -12,7 +12,7 @@ Summary:	Mozilla Firefox web browser
 Summary(pl.UTF-8):	Mozilla Firefox - przeglądarka WWW
 Name:		mozilla-firefox-bin
 Version:	159.0.1
-Release:	1
+Release:	2
 License:	MPL/LGPL
 Group:		X11/Applications/Networking
 Source0:	https://ftp.mozilla.org/pub/firefox/releases/%{version}/linux-x86_64/en-US/%{realname}-%{version}.tar.xz?/%{realname}-%{version}.x8664.tar.xz
@@ -42,14 +42,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_firefoxdir	%{_libdir}/%{name}
 
-%define		moz_caps	libmozalloc.so libmozavcodec.so libmozavutil.so libclearkey.so libgkcodecs.so liblgpllibs.so libmozgtk.so libmozinference.so libmozsandbox.so libmozsqlite3.so libmozwayland.so libxpcom.so libxul.so
+%define		moz_caps	libmozavcodec.so libmozavutil.so libclearkey.so libgkcodecs.so liblgpllibs.so libmozgtk.so libmozinference.so libmozsandbox.so libmozsqlite3.so libmozwayland.so libonnxruntime.so libxul.so
 %define		sqlite_caps	libsqlite3.so
 
-# list of files (regexps) which don't generate Provides
-%define		_noautoprovfiles	%{_libdir}/%{name}/components
-# list of script capabilities (regexps) not to be used in Provides
-%define		_noautoprov		%{moz_caps}
-%define		_noautoreq		%{_noautoprov} %{sqlite_caps} libnotify.so.1
+# bundled private libraries must never satisfy system-wide dependencies
+%define		_noautoprovfiles	%{_libdir}/%{name}/
+%define		_noautoreq		%{moz_caps} %{sqlite_caps} libnotify.so.1
 
 # no debuginfo available
 %define		_enable_debug_packages	0
